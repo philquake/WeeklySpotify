@@ -1,12 +1,8 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
-<<<<<<< HEAD
-
-=======
 from dotenv import load_dotenv
 import os 
->>>>>>> 48ff13ea292384b09cf1ffe1af6f7fb4019dc644
 from flask import Flask, request, url_for, session, redirect
 
 app = Flask(__name__)
@@ -100,16 +96,6 @@ def get_token():
             token_info = spotipy_oauth.refresh_access_token(token_info['refresh_token'])
     return token_info
 
-def get_token():
-    token_info = session.get(TOKEN_INFO, None)
-    if not token_info:
-        redirect (url_for('login', external=False))
-
-    now = int((time.time))
-
-    is_expired = token_info['expires_at'] - now < 60
-
-    now = int(time.time())
 
 def create_spotify_oauth():
     return SpotifyOAuth(client_id = os.getenv('client_id'),
